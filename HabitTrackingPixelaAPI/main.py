@@ -4,7 +4,7 @@ pixela_endpoint="https://pixe.la/v1/users"
 today=dt.datetime.today()
 
 params={
-    "token":"iliketoeatapplesandbananas27601840",
+    "token":"",
     "username":"mosaif",
     "agreeTermsOfService":"yes",
     "notMinor":"yes",

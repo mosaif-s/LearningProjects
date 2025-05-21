@@ -1,7 +1,7 @@
 import requests
 import datetime as dt
 APP_ID="eb583490"
-API_KEY="4b81dc0eb47a1c9004aba2151e93ed5a"
+API_KEY=""
 
 params={
     "query":input("Please input the exercise you did today: "),
@@ -31,6 +31,6 @@ for exercise in data['exercises']:
         }
     }
     print(body)
-    response=requests.post(url=sheety_Endpoint,json=body, auth=("mosaif5", "iusedtobelievethatearthwasflat99"))
+    response=requests.post(url=sheety_Endpoint,json=body, auth=("mosaif5", ""))
     print(response.text)
 

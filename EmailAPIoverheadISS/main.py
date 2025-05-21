@@ -46,7 +46,7 @@ time_now = datetime.now()
 if inRangeLat(iss_latitude) and inRangeLong(iss_longitude):
     if ((time_now.hour>=sunset) or (time_now.hour<=sunrise)):
 
-        password = "nctvtlhcfmfykcqn"
+        password = ""
         email = "mosaif.shaikh20@gmail.com"
         toEmail = "walkercradle@gmail.com"
 

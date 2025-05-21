@@ -18,12 +18,12 @@ percentageChange=((yesterdayPrice-dayBeforeYesterdayPrice)/dayBeforeYesterdayPri
 
 ## Uses https://newsapi.org
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME. 
-API_key_news="ccdf59ef5e8e4bba8e107a124a23ec95"
+API_key_news=""
 url = ('https://newsapi.org/v2/everything?'
        'q=Tesla&'
        f'from={news_day}&'
        'sortBy=popularity&'
-       'apiKey=ccdf59ef5e8e4bba8e107a124a23ec95')
+       f'apiKey={API_key_news}')
 
 response = requests.get(url)
 data=response.json()
