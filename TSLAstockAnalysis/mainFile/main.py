@@ -2,6 +2,7 @@ import requests
 import datetime as dt
 today = dt.date.today()
 news_day = today - dt.timedelta(days=3)
+#this_______
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
@@ -35,9 +36,11 @@ top_3 = [
     }
     for article in top_3_articles
 ]
+#this_______________
 
 ## STEP 3: Use https://www.twilio.com
-# Send a seperate message with the percentage change and each article's title and description to your phone number. 
+# Send a seperate message with the percentage change and each article's title and description to your phone number.
+#this ______________
 for i in range(3):
     message=(f""
              f" {STOCK} : {percentageChange:.2f}%\n"
