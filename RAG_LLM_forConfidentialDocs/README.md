@@ -2,11 +2,13 @@
 
 ---
 
-<img src="img_2.png" width="350" style="display: inline-block; margin-right: 20px;">
-<img src="img_3.png" width="330" style="display: inline-block;">
-
+<p>
+  <img src="img_2.png" width="450" style="display:inline-block; margin-right:20px;">
+  <img src="img_3.png" width="450" style="display:inline-block;">
+</p>
 
 ---
+
 
 # 📄 Ask a Document with LangChain, OpenAI & Pinecone
 
