@@ -1,10 +1,10 @@
-<img src="img.png" width="180"/>
+<img src="img.png" width="280"/>
 
 ---
 
-<img src="img_2.png" width="150" style="margin-bottom: 20px;"><br>
+<img src="img_2.png" width="280" style="margin-bottom: 20px;"><br>
 
-<img src="img_3.png" width="150"/>
+<img src="img_3.png" width="280"/>
 
 ---
 
