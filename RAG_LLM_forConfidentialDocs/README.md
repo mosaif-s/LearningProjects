@@ -1,9 +1,10 @@
-![My Image](img.png)
+<img src="img.png" width="180"/>
 
 ---
 
-![My Image](img_2.png)
-![My Image](img_3.png)
+<img src="img_2.png" width="150" style="margin-bottom: 20px;"><br>
+
+<img src="img_3.png" width="150"/>
 
 ---
 
