@@ -1,11 +1,16 @@
 <img src="img.png" width="450"/>
 
 ---
+# Step 1
 
-<p>
-  <img src="img_2.png" width="800" style="display:inline-block; margin-right:20px;">
-  <img src="img_3.png" width="800" style="display:inline-block;">
-</p>
+<img src="img_2.png" width="800" style="display:inline-block; margin-right:20px;">
+
+---
+
+# Step 2
+
+<img src="img_3.png" width="800" style="display:inline-block;">
+
 
 ---
 
