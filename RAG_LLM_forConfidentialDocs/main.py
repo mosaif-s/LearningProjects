@@ -17,7 +17,7 @@ warnings.filterwarnings("ignore")
 warnings.showwarning = lambda *args, **kwargs: None
 
 def load_document(file):
-    name, extension=file.split('.')
+    name, extension=file.rsplit('.',1)
     if extension=='pdf':
         from langchain.document_loaders import PyPDFLoader
         print(f"Loading {file}")
@@ -26,6 +26,10 @@ def load_document(file):
         from langchain.document_loaders import Docx2txtLoader
         print(f"Loading {file}")
         loader=Docx2txtLoader(file)
+    elif extension=='txt':
+        from langchain.document_loaders import TextLoader
+        print(f"Loading {file}")
+        loader=TextLoader(file)
     else:
         print("Document extension not supported (yet hahaha")
         return
@@ -33,19 +37,20 @@ def load_document(file):
     data=loader.load()
     return data
 
-def chunk_data(data, chunk_size=256):
+def chunk_data(data, chunk_size=256, chunk_overlap=20):
     from langchain.text_splitter import  RecursiveCharacterTextSplitter
-    splitter=RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=0) #get to know more anout the arguements
+    splitter=RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap) #get to know more anout the arguements
     chunks=splitter.split_documents(data)
     return chunks
 
 
-def print_embedding_costs(texts):
+def calculate_embedding_costs(texts):
     import tiktoken
     enc=tiktoken.encoding_for_model('text-embedding-ada-002')
     total_tokens=sum([len(enc.encode(page.page_content)) for page in texts])
     print(f"Total tokens: {total_tokens}")
     print(f"Embedding Cost in USD: {total_tokens/1000*0.0004:.6f}")
+    return total_tokens,total_tokens/1000*0.0004
 
 def insert_or_fetch_embeddings(index_name,chunks):
     from langchain_openai import OpenAIEmbeddings
@@ -87,7 +92,7 @@ def delete_pinecone_index(index_name='all'):
         pc.delete_index(index_name)
         print('Ok')
 
-def ask_and_get_answer(vector_store, q):
+def ask_and_get_answer(vector_store, q, k=3):
     from langchain_openai import ChatOpenAI
     from langchain_core.prompts import PromptTemplate
     from langchain.chains import RetrievalQA # it was not a model , why ids
@@ -95,7 +100,7 @@ def ask_and_get_answer(vector_store, q):
     from langchain.memory import ConversationBufferMemory
 
     llm=ChatOpenAI(model='gpt-3.5-turbo', temperature=1)
-    retriever=vector_store.as_retriever(search_type='similarity',search_kwargs={'k':3})
+    retriever=vector_store.as_retriever(search_type='similarity',search_kwargs={'k':k})
     custom_prompt = PromptTemplate(
         input_variables=["context", "question"],
         template="""
@@ -140,11 +145,11 @@ def runLoop(vector_store):
             print(f'Answer: {answer}')
             print('-'*50)
 
-data=load_document('21220405_ThePaperSon_Assign1.pdf')
-chunks=chunk_data(data)
-print_embedding_costs(chunks)
+#data=load_document('21220405_ThePaperSon_Assign1.pdf')
+#chunks=chunk_data(data)
+#calculate_embedding_costs(chunks)
 #delete_pinecone_index()
-index_name='askadocument'
-vector_store=insert_or_fetch_embeddings(index_name,chunks)
-runLoop(vector_store)
+#index_name='askadocument'
+#vector_store=insert_or_fetch_embeddings(index_name,chunks)
+#runLoop(vector_store)
 

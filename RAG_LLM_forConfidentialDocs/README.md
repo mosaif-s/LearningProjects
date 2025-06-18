@@ -1,5 +1,12 @@
 ![My Image](img.png)
 
+---
+
+![My Image](img_2.png)
+![My Image](img_3.png)
+
+---
+
 # 📄 Ask a Document with LangChain, OpenAI & Pinecone
 
 This project allows you to upload a document (PDF or DOCX), convert it into vector embeddings using OpenAI, store it in Pinecone, and ask natural language questions about it using a conversational chain powered by LangChain.
